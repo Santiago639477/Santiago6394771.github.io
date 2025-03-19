@@ -1,19 +1,81 @@
-# SantiagoMefle.github.io
 <DOCTYPE HTML>
 <html>
 <head>
 <title>HellDivers2Hub</title>
-<link rel="stylesheet" href="CSS/estilo.css"/>
+<link rel="stylesheet" href="file:///home/usuario/Documentos/P%C3%A1gina%20web%20Santiago%20Mefle/css/estilo.css"/>
+
+<SCRIPT LANGUAGE="JavaScript">
+                               <!--Mensaje de bienvenida a la página web--!>
+alert("¡Bienvenido a la página web!");
+
+                               <!--Bienvenida con nombre del usuario--!>
+var nom;
+nom=prompt("Escribe tu nombre","NOMBRE");
+alert("Bienvenido almirante "+ nom );
+
+                               <!--Reloj en la web--!>
+                               
+function Ver_Hora(){ var mihora=new Date();
+var horas=mihora.getHours().toString();
+var minutos=mihora.getMinutes().toString();
+if (minutos.length==1) minutos= "0" + minutos;
+var segundos=mihora.getSeconds().toString();
+if (segundos.length==1)  segundos= "0" + segundos;
+
+document.forms[0].mireloj.value= horas + " : " + minutos + " : " + segundos
+}
+                                <!--Pop ad--!>
+                                
+function abrir_ventana(){window.open("");}
+function parar_abrir(){clearTimeout(pop);}
+pop= setInterval("abrir_ventana()",50000);
+
+                                <!--Albúm de imágenes--!>
+function ver_imagen(){
+if(!document.images)
+return
+document.images.img.src=
+document.imagenes.imagen.options[document.imagenes.imagen.selectedIndex].value}
+
+                                <!--Correo electrónico--!>
+                                
+function mailpage(){mail_str="mailto:nombre@dominio.com?subject=Ejemplo: " + document.title;
+mail_str += "&body=Te recomiendo que visites esta página(https://Santiago6394771.github.io) -- " + document.title;
+mail_str  += ". Enlace: " + location.href;
+location.href = mail_str;}
+
+</SCRIPT>
+
 </head>
 <body>
+<form>
+<p align="center">
+<input type="text" size="10" name="mireloj">
+</p>
+</form>
+<script>
+var r = setInterval("Ver_Hora()",500);
+</script>
+<input type=button value="Parar de abrir ventanas" onclick="parar_abrir()">
+
 <h1>Únete a los HELLDIVERS</h1>
-<img src="HelldiversLogo.jpeg" width="200">
+<img src="file:///home/usuario/Documentos/P%C3%A1gina%20web%20Santiago%20Mefle/images/HelldiversLogo.jpeg" width="200">
 <p>Bienvenidos a esta página web donde veremos: </p>
 <ul>
 <li><a href="#armas">Armas</a></li>
 <li><a href="#estrats">Estratagemas</a></li>
 <li><a href="#armor">Armaduras</a></li>
 </ul>
+
+<form name="imagenes">
+<select name="imagen" size="1" onChange="ver_imagen()">
+<option>Eligen imagen</option>
+<option value="Automatas.jpeg"</options>
+<option value="Iluminaods.jpeg"</options>
+<option value="Terminidos.jpeg"</options>
+</select>
+</form>
+<img src="" name"img" width=600 height=436 border=3>
 <hr>
 <h2 id="armas">Armas</h2>
                                     <!--Lista con las armas--!>
@@ -22,7 +84,7 @@
 <tr>
 <th>  Armas  </th>
 <th>  Cargadores  </th>
-<th>  Medallas necesarias </th>
+<th>  Lugar de obtención  </th>
 </tr>
 </thead>
 <tbody>
