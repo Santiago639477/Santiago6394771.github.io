@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>HellDivers2Hub</title>
-<link rel="stylesheet" href="file:///home/usuario/Documentos/P%C3%A1gina%20web%20Santiago%20Mefle/css/estilo.css"/>
+<link rel="CSS/estilo.css"/>
 
 <SCRIPT LANGUAGE="JavaScript">
                                <!--Mensaje de bienvenida a la página web--!>
@@ -31,11 +31,89 @@ function parar_abrir(){clearTimeout(pop);}
 pop= setInterval("abrir_ventana()",50000);
 
                                 <!--Albúm de imágenes--!>
-function ver_imagen(){
-if(!document.images)
-return
-document.images.img.src=
-document.imagenes.imagen.options[document.imagenes.imagen.selectedIndex].value}
+$(document).ready(function(){
+		
+$('.photo_slider').each(function(){
+	
+	var $this = $(this).addClass('photo-area');
+	var $img = $this.find('img');
+	var $info = $this.find('.info_area');
+		
+	var opts = {};
+	
+	$img.ready(function(){
+		opts.imgw = $img.width();
+		opts.imgh = $img.height();
+	});
+	
+	opts.orgw = $this.width();
+	opts.orgh =  $this.height();
+	
+	$img.css ({
+		marginLeft: "-150px",
+		marginTop: "-150px"
+	});
+	
+	var $wrap = $('<div class="photo_slider_img">').append($img).prependTo($this);
+
+	var $open = $('<a href="#" class="more_info">More Info &gt;</a>').appendTo($this);
+	
+	var $close = $('<a class="close">Close</a>').appendTo($info);
+	
+	opts.wrapw = $wrap.width();
+	opts.wraph = $wrap.height();
+	
+	$open.click(function(){
+		$this.animate({ 
+			width: opts.imgw,
+			height: (opts.imgh+95),
+			borderWidth: "10"
+			
+		}, 600 );
+				
+		$open.fadeOut();
+		
+		$wrap.animate({ 
+		    width: opts.imgw,
+			height: opts.imgh
+		}, 600 );
+
+		$(".info_area",$this).fadeIn();
+		
+		$img.animate({
+			marginTop: "0px",
+			marginLeft: "0px"
+		}, 600 );
+		
+		return false;
+	});
+	
+	$close.click(function(){
+		$this.animate({ 
+			width: opts.orgw,
+			height: opts.orgh,
+	        borderWidth: "1"
+	      }, 600 );
+		
+		$open.fadeIn();
+		
+		$wrap.animate({ 
+	        width: opts.wrapw,
+			height: opts.wraph
+		      }, 600 );
+		
+			$img.animate({
+				marginTop: "-150px",
+				marginLeft: "-150px"
+			}, 600 );
+
+		$(".info_area",$this).fadeOut();
+		return false;
+	});
+	
+});
+
+});
 
                                 <!--Correo electrónico--!>
                                 
@@ -59,23 +137,45 @@ var r = setInterval("Ver_Hora()",500);
 <input type=button value="Parar de abrir ventanas" onclick="parar_abrir()">
 
 <h1>Únete a los HELLDIVERS</h1>
-<img src="file:///home/usuario/Documentos/P%C3%A1gina%20web%20Santiago%20Mefle/images/HelldiversLogo.jpeg" width="200">
+<img src="HelldiversLogo.jpeg" width="200">
 <p>Bienvenidos a esta página web donde veremos: </p>
 <ul>
 <li><a href="#armas">Armas</a></li>
 <li><a href="#estrats">Estratagemas</a></li>
 <li><a href="#armor">Armaduras</a></li>
 </ul>
-
-<form name="imagenes">
-<select name="imagen" size="1" onChange="ver_imagen()">
-<option>Eligen imagen</option>
-<option value="Automatas.jpeg"</options>
-<option value="Iluminaods.jpeg"</options>
-<option value="Terminidos.jpeg"</options>
-</select>
-</form>
-<img src="" name"img" width=600 height=436 border=3>
+                                          <!--Carrete de fotos--!>
+<div id="page-wrap">
+	
+		<h1>Revealing Photo Slider</h1>
+		
+		<table><tr>
+		
+		<td><div class="photo_slider">
+			<img src="HelldiversLogo.jpeg"/>
+				
+		</div></td>
+		
+<td><div class="photo_slider">
+	<img src="Terminidos.jpeg"/>
+	
+		
+</div></td>
+		
+		<td><div class="photo_slider">
+			<img src="Automatas.jpeg"/>
+			
+		</div></td>
+		
+		<td><div class="photo_slider">
+			<img src="Iluminados.jpeg"/>
+			
+				
+		</div></td>
+		
+		</tr></table>
+			
+	</div>
 <hr>
 <h2 id="armas">Armas</h2>
                                     <!--Lista con las armas--!>
